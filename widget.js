@@ -100,7 +100,7 @@ function modalById(id) {
     },
     couchdb: {
       name: 'CouchDB',
-      icon: 'assets/bigquery.svg'
+      icon: 'assets/couchdb.svg'
     },
     'google-sheets': {
       name: 'Google Sheets',
