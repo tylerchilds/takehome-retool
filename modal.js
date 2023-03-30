@@ -1,10 +1,10 @@
-import tag from 'https://deno.land/x/tag@v0.2.0/mod.js'
+import module from './module.js'
 
 function renderModal() {
   const {
     body,
     isOpen
-  } = $.read()
+  } = $.learn()
 
   if(!isOpen) return ''
 
@@ -22,7 +22,7 @@ function renderModal() {
   `
 }
 
-const $ = tag('ctx-modal', {
+const $ = module('ctx-modal', {
   label: null,
   children: null,
   isOpen: null
@@ -32,7 +32,7 @@ export default $
 
 export function showModal(body) {
   document.body.classList.add('overlay')
-  $.write({
+  $.teach({
     body,
     isOpen: true,
   })
@@ -40,16 +40,16 @@ export function showModal(body) {
 
 export function hideModal() {
   document.body.classList.remove('overlay')
-  $.write({
+  $.teach({
     isOpen: false
   })
 }
 
-$.on('click', '.close', hideModal)
+$.when('click', '.close', hideModal)
 
-$.render(renderModal)
+$.draw(renderModal)
 
-$.style(`
+$.flair(`
   body.overlay {
     overflow: hidden;
   }

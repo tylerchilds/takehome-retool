@@ -1,4 +1,4 @@
-import tag from 'https://deno.land/x/tag@v0.2.0/mod.js'
+import module from './module.js'
 import { showModal } from './modal.js'
 
 // In our widget we have rows we want to animate.
@@ -56,10 +56,10 @@ function iterate(event) {
 // this is my helper library, for scoping components
 // think react meets jQuery
 // docs: https://tylerchilds.com/tag/examples
-const $ = tag('.sliding-pills')
+const $ = module('.sliding-pills')
 
 // delegate click events on the pill buttons in this scope
-$.on('click', '.pill', (event) => {
+$.when('click', '.pill', (event) => {
   // using the dataset-id as a key for looking up metadata
   const { id } = event.target.dataset
   // open a modal with some content
@@ -67,11 +67,11 @@ $.on('click', '.pill', (event) => {
 })
 
 // delegate transition events for the rows
-$.on('transitionstart', '.sliding-pills__row', animate)
-$.on('transitionend', '.sliding-pills__row', iterate)
+$.when('transitionstart', '.sliding-pills__row', animate)
+$.when('transitionend', '.sliding-pills__row', iterate)
 
 // scope some styles, the & is .sliding-pills in this scenario
-$.style(`
+$.flair(`
   & .sliding-pills__row {
     --speed: 25;
     transform: translateX(0);
